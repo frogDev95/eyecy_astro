@@ -1,0 +1,39 @@
+---
+import Header from "../layout/header.astro";
+---
+
+<div class="relative hero w-full h-[900px]">
+    <img
+        class="absolute top-0 left-0 img-sub"
+        src="/images/home/hero/top_left.png"
+    />
+    <img
+        class="absolute top-0 right-0 img-sub"
+        src="/images/home/hero/top_right.png"
+    />
+    <img
+        class="absolute top-0 left-0 h-full w-full"
+        src="/images/home/hero/background.png"
+    />
+    <img
+        class="absolute bottom-0 left-0 img-sub"
+        src="/images/home/hero/bottom_left.png"
+    />
+    <img
+        class="absolute bottom-0 right-0 img-sub"
+        src="/images/home/hero/bottom_right.png"
+    />
+    <!-- <img
+        class="absolute top-0 right-0 w-32 h-32 bg-[url('/images/bg3.jpg')] bg-cover"
+    /> -->
+    <Header />
+</div>
+
+<style>
+    img {
+        z-index: -2;
+    }
+    .img-sub {
+        z-index: -1;
+    }
+</style>
