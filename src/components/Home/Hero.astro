@@ -4,7 +4,7 @@ import Header from "../layout/header.astro";
 
 <div class="relative hero w-full h-[900px]">
     <img
-        class="absolute top-0 left-0 img-sub"
+        class="absolute top-[-15px] left-0 img-sub"
         src="/images/home/hero/top_left.png"
     />
     <img
@@ -35,5 +35,10 @@ import Header from "../layout/header.astro";
     }
     .img-sub {
         z-index: -1;
+    }
+    @media screen and (max-width: 985px) {
+        .img-sub {
+            display: none;
+        }
     }
 </style>
