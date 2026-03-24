@@ -1,0 +1,83 @@
+---
+import { HEADER_MENU_LIST, IS_PARENT } from "../../constants.js";
+import SubMenu from "./subMenu.tsx";
+---
+
+<div class="list-header-menu p-5">
+    <div class="menu-open-wrapper">
+        <div
+            class="menu-open-btn"
+            id="menuOpenBtn"
+            aria-controls="fullMenu"
+            aria-expanded="false"
+        >
+            <div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+    <aside
+        class="menu-drawer scrollbar-custom overflow-y-scroll"
+        id="fullMenu"
+        aria-hidden="true"
+    >
+        <div class="menu-head">
+            <div>
+                <img src="/images/common/logo.png" alt="Logo" class="w-28" />
+            </div>
+            <button id="menuCloseBtn" aria-label="Close menu">
+                <div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </button>
+        </div>
+        <nav class="pt-8">
+            <ul class="menu-items">
+                {
+                    HEADER_MENU_LIST.map((item) => (
+                        <>
+                            {item.type === IS_PARENT ? (
+                                <SubMenu item={item} />
+                            ) : (
+                                <li>
+                                    <a href="#">{item.label}</a>
+                                </li>
+                            )}
+                        </>
+                    ))
+                }
+            </ul>
+        </nav>
+    </aside>
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+</div>
+
+<script is:inline>
+    const openBtn = document.getElementById("menuOpenBtn");
+    const closeBtn = document.getElementById("menuCloseBtn");
+    const menu = document.getElementById("fullMenu");
+    const backdrop = document.getElementById("menuBackdrop");
+
+    if (openBtn && closeBtn && menu && backdrop) {
+        const toggleMenu = (open) => {
+            menu.classList.toggle("open", open);
+            backdrop.classList.toggle("active", open);
+            openBtn.setAttribute("aria-expanded", String(open));
+            menu.setAttribute("aria-hidden", String(!open));
+            document.body.style.overflow = open ? "hidden" : "";
+        };
+
+        openBtn.addEventListener("click", () => toggleMenu(true));
+        closeBtn.addEventListener("click", () => toggleMenu(false));
+        backdrop.addEventListener("click", () => toggleMenu(false));
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && menu.classList.contains("open")) {
+                toggleMenu(false);
+            }
+        });
+    }
+</script>
