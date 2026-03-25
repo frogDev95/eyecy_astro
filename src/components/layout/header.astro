@@ -7,12 +7,12 @@ import ServicesDropdown from "./ServicesDropdown.tsx";
     <ListHeader />
 </div>
 <div class="py-2 grid grid-cols-24 gap-4 max-[985px]:hidden">
-    <div class="col-span-24 min-[1150px]:col-span-8">
+    <div class="col-span-24 min-[1150px]:col-span-7">
         <div class="flex w-full h-full min-[1150px]:pl-[10vw] justify-center">
             <img src="/images/common/logo.png" class="z-3" />
         </div>
     </div>
-    <div class="col-span-24 min-[1150px]:col-span-16 2xl:col-span-11">
+    <div class="col-span-24 min-[1150px]:col-span-16 2xl:col-span-10">
         <nav
             class="flex gap-[40px] items-center content-left h-full max-[1150px]:justify-center"
         >
@@ -27,11 +27,23 @@ import ServicesDropdown from "./ServicesDropdown.tsx";
             </div>
         </nav>
     </div>
-    <div class="pl-4 2xl:col-span-5 max-2xl:hidden">
+    <div class="2xl:col-span-7 max-2xl:hidden">
         <div class="flex items-center justify-left h-full">
             <button class="talk-btn text-white">
-                Let's Talk
-                <i> </i>
+                <span>Let's Talk</span>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                >
+                    <path
+                        d="M10.7979 9.48683C10.6654 9.494 10.5354 9.44828 10.4366 9.3597C10.3378 9.27112 10.2781 9.14694 10.2708 9.01442L9.87177 1.73545L0.874268 11.775C0.785619 11.8739 0.661307 11.9335 0.528678 11.9408C0.39605 11.9481 0.26597 11.9023 0.167054 11.8137C0.0681379 11.725 0.00848936 11.6007 0.00123006 11.4681C-0.00602952 11.3355 0.0396948 11.2054 0.128344 11.1065L9.12585 1.06695L1.84681 1.46478C1.71707 1.4673 1.59142 1.41936 1.49632 1.33106C1.40123 1.24276 1.34412 1.121 1.33702 0.991426C1.32993 0.861852 1.37341 0.734584 1.4583 0.636434C1.54319 0.538283 1.66286 0.476914 1.7921 0.465255L10.2787 0.000730388C10.4112 -0.00644076 10.5412 0.0392841 10.64 0.127861C10.7388 0.216438 10.7985 0.340624 10.8058 0.47314L11.2703 8.95971C11.2775 9.09224 11.2318 9.22219 11.1432 9.32102C11.0546 9.41986 10.9304 9.47949 10.7979 9.48683Z"
+                        fill="white"
+                    >
+                    </path>
+                </svg>
             </button>
         </div>
     </div>
@@ -49,18 +61,40 @@ import ServicesDropdown from "./ServicesDropdown.tsx";
         padding: 0 10px;
     }
     .talk-btn {
-        width: 156px;
-        height: 59px;
-        border-radius: 60px;
-        background: linear-gradient(
+        border-width: 0px !important;
+        border-radius: 40px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        line-height: 1.7rem;
+        letter-spacing: 1.5px;
+        font-size: 16px;
+        font-family: "Jost", Helvetica, Arial, Lucida, sans-serif !important;
+        font-weight: 200 !important;
+        transition: transform 0.3s ease;
+        background-image: linear-gradient(
             90deg,
-            #8d71fe 3.2%,
-            #725dff 15.55%,
-            #5c4efe 29.55%,
-            #4e57ff 39.85%,
-            #4373ff 51.38%,
-            #388eff 62.5%,
-            #25c9ff 82.27%
+            #8d71fe 3px,
+            #725dff 15px,
+            #5c4efe 30px,
+            #4e57ff 40px,
+            #4373ff 51px,
+            #388eff 62px,
+            #25c9ff 82px
         );
+        padding-top: 10px !important;
+        padding-right: 35px !important;
+        padding-bottom: 10px !important;
+        padding-left: 25px !important;
+    }
+    .talk-btn svg {
+        transition: transform 1s ease;
+        transform-origin: center;
+    }
+    .talk-btn:hover {
+        transform: scale(1.1);
+    }
+    .talk-btn:hover svg {
+        transform: rotate(360deg);
     }
 </style>
