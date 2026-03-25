@@ -3,52 +3,53 @@ import ListHeader from "./listHeader.astro";
 import ServicesDropdown from "./ServicesDropdown.tsx";
 ---
 
-<div class="min-[985px]:hidden">
-    <ListHeader />
-</div>
-<div class="py-2 grid grid-cols-24 gap-4 max-[985px]:hidden">
-    <div class="col-span-24 min-[1150px]:col-span-7">
-        <div class="flex w-full h-full min-[1150px]:pl-[10vw] justify-center">
-            <img src="/images/common/logo.png" class="z-3" />
-        </div>
+<div>
+    <div class="csm:hidden">
+        <ListHeader />
     </div>
-    <div class="col-span-24 min-[1150px]:col-span-16 2xl:col-span-10">
-        <nav
-            class="flex gap-[40px] items-center content-left h-full max-[1150px]:justify-center"
-        >
-            <div>
-                <a href="#" class="">HOME</a>
-                <a href="#" class="">ABOUT</a>
-                <ServicesDropdown client:idle />
-                <a href="#" class="">PORTFOLIO</a>
-                <a href="#" class="">PROJECTS</a>
-                <a href="#" class="">BLOG</a>
-                <a href="#" class="">CONTACT</a>
+    <div class="py-2 grid-cols-24 gap-4 hidden csm:grid">
+        <div class="col-span-24 cxl:col-span-7">
+            <div class="flex w-full h-full cxl:pl-[10vw] justify-center">
+                <img src="/images/common/logo.png" class="z-3" />
             </div>
-        </nav>
-    </div>
-    <div class="2xl:col-span-7 max-2xl:hidden">
-        <div class="flex items-center justify-left h-full">
-            <button class="talk-btn text-white">
-                <span>Let's Talk</span>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                >
-                    <path
-                        d="M10.7979 9.48683C10.6654 9.494 10.5354 9.44828 10.4366 9.3597C10.3378 9.27112 10.2781 9.14694 10.2708 9.01442L9.87177 1.73545L0.874268 11.775C0.785619 11.8739 0.661307 11.9335 0.528678 11.9408C0.39605 11.9481 0.26597 11.9023 0.167054 11.8137C0.0681379 11.725 0.00848936 11.6007 0.00123006 11.4681C-0.00602952 11.3355 0.0396948 11.2054 0.128344 11.1065L9.12585 1.06695L1.84681 1.46478C1.71707 1.4673 1.59142 1.41936 1.49632 1.33106C1.40123 1.24276 1.34412 1.121 1.33702 0.991426C1.32993 0.861852 1.37341 0.734584 1.4583 0.636434C1.54319 0.538283 1.66286 0.476914 1.7921 0.465255L10.2787 0.000730388C10.4112 -0.00644076 10.5412 0.0392841 10.64 0.127861C10.7388 0.216438 10.7985 0.340624 10.8058 0.47314L11.2703 8.95971C11.2775 9.09224 11.2318 9.22219 11.1432 9.32102C11.0546 9.41986 10.9304 9.47949 10.7979 9.48683Z"
-                        fill="white"
+        </div>
+        <div class="col-span-24 cxl:col-span-16 2xl:col-span-10">
+            <nav
+                class="flex gap-10 items-center h-full justify-center cxl:justify-start 3xl:pl-[35px]"
+            >
+                <div>
+                    <a href="#" class="">HOME</a>
+                    <a href="#" class="">ABOUT</a>
+                    <ServicesDropdown client:idle />
+                    <a href="#" class="">PORTFOLIO</a>
+                    <a href="#" class="">PROJECTS</a>
+                    <a href="#" class="">BLOG</a>
+                    <a href="#" class="">CONTACT</a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-span-7 hidden 2xl:block">
+            <div class="flex items-center justify-left h-full">
+                <button class="talk-btn text-white">
+                    <span>Let's Talk</span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
                     >
-                    </path>
-                </svg>
-            </button>
+                        <path
+                            d="M10.7979 9.48683C10.6654 9.494 10.5354 9.44828 10.4366 9.3597C10.3378 9.27112 10.2781 9.14694 10.2708 9.01442L9.87177 1.73545L0.874268 11.775C0.785619 11.8739 0.661307 11.9335 0.528678 11.9408C0.39605 11.9481 0.26597 11.9023 0.167054 11.8137C0.0681379 11.725 0.00848936 11.6007 0.00123006 11.4681C-0.00602952 11.3355 0.0396948 11.2054 0.128344 11.1065L9.12585 1.06695L1.84681 1.46478C1.71707 1.4673 1.59142 1.41936 1.49632 1.33106C1.40123 1.24276 1.34412 1.121 1.33702 0.991426C1.32993 0.861852 1.37341 0.734584 1.4583 0.636434C1.54319 0.538283 1.66286 0.476914 1.7921 0.465255L10.2787 0.000730388C10.4112 -0.00644076 10.5412 0.0392841 10.64 0.127861C10.7388 0.216438 10.7985 0.340624 10.8058 0.47314L11.2703 8.95971C11.2775 9.09224 11.2318 9.22219 11.1432 9.32102C11.0546 9.41986 10.9304 9.47949 10.7979 9.48683Z"
+                            fill="white"
+                        >
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 </div>
-
 <style>
     nav a {
         color: #fff;
