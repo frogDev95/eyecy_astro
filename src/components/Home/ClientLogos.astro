@@ -1,2 +1,260 @@
 ---
+const clientLogos = [
+    { name: "Vultr", src: "/images/home/client/vultr-logo.png" },
+    { name: "DigitalOcean", src: "/images/home/client/digitalocean-logo.png" },
+    { name: "Microsoft", src: "/images/home/client/microsoft-logo.png" },
+    { name: "Ubiquiti", src: "/images/home/client/ubiquiti-logo.png" },
+    { name: "Adobe", src: "/images/home/client/adobe-logo.png" },
+];
+
+const marqueeLogos = [...clientLogos, ...clientLogos, ...clientLogos];
 ---
+
+<section class="client-strip" aria-label="Client logos">
+    <div class="client-strip__fade client-strip__fade--left"></div>
+    <div class="client-strip__fade client-strip__fade--right"></div>
+
+    <div class="client-strip__viewport" data-client-strip>
+        <div class="client-strip__track" data-client-track>
+            {
+                marqueeLogos.map((logo, index) => (
+                    <div
+                        class="client-strip__item"
+                        aria-hidden={index >= clientLogos.length ? "true" : undefined}
+                    >
+                        <img
+                            src={logo.src}
+                            alt={index >= clientLogos.length ? "" : `${logo.name} logo`}
+                            loading="lazy"
+                            draggable="false"
+                        />
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    const viewport = document.querySelector("[data-client-strip]");
+    const track = document.querySelector("[data-client-track]");
+
+    if (viewport && track) {
+        let offset = 0;
+        let segmentWidth = 0;
+        let stepWidth = 0;
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragStartOffset = 0;
+        let autoAdvanceId = 0;
+        const stepIntervalMs = 3000;
+        const stepDurationMs = 340;
+
+        const recenterOffset = () => {
+            if (!segmentWidth) return;
+            while (offset <= -2 * segmentWidth) offset += segmentWidth;
+            while (offset > -segmentWidth) offset -= segmentWidth;
+        };
+
+        const applyTransform = (useTransition = false) => {
+            track.style.transition = useTransition
+                ? `transform ${stepDurationMs}ms ease`
+                : "none";
+            track.style.transform = `translate3d(${offset}px, 0, 0)`;
+        };
+
+        const measure = () => {
+            segmentWidth = track.scrollWidth / 3;
+            const items = track.querySelectorAll(".client-strip__item");
+
+            if (items.length > 1) {
+                const firstRect = items[0].getBoundingClientRect();
+                const secondRect = items[1].getBoundingClientRect();
+                stepWidth = secondRect.left - firstRect.left;
+            }
+
+            if (!offset) {
+                offset = -segmentWidth;
+            } else {
+                recenterOffset();
+            }
+            applyTransform();
+        };
+
+        const normalizeOffset = (value) => {
+            let normalized = value;
+            if (!segmentWidth) return normalized;
+            while (normalized <= -2 * segmentWidth) normalized += segmentWidth;
+            while (normalized > -segmentWidth) normalized -= segmentWidth;
+            return normalized;
+        };
+
+        const snapToNearest = () => {
+            if (!stepWidth) return;
+            offset = Math.round(offset / stepWidth) * stepWidth;
+            offset = normalizeOffset(offset);
+            applyTransform(true);
+        };
+
+        const stopAutoAdvance = () => {
+            window.clearInterval(autoAdvanceId);
+        };
+
+        const startAutoAdvance = () => {
+            stopAutoAdvance();
+            autoAdvanceId = window.setInterval(() => {
+                if (isDragging || !stepWidth) return;
+                offset -= stepWidth;
+                applyTransform(true);
+            }, stepIntervalMs);
+        };
+
+        const onPointerDown = (event) => {
+            isDragging = true;
+            stopAutoAdvance();
+            dragStartX = event.clientX;
+            dragStartOffset = offset;
+            viewport.setPointerCapture(event.pointerId);
+            viewport.classList.add("is-dragging");
+            track.style.transition = "none";
+        };
+
+        const onPointerMove = (event) => {
+            if (!isDragging) return;
+            const deltaX = event.clientX - dragStartX;
+            offset = dragStartOffset + deltaX;
+            recenterOffset();
+            applyTransform();
+        };
+
+        const endDrag = (event) => {
+            if (!isDragging) return;
+            isDragging = false;
+            viewport.classList.remove("is-dragging");
+            snapToNearest();
+            startAutoAdvance();
+
+            if (event?.pointerId !== undefined && viewport.hasPointerCapture(event.pointerId)) {
+                viewport.releasePointerCapture(event.pointerId);
+            }
+        };
+
+        viewport.addEventListener("pointerdown", onPointerDown);
+        viewport.addEventListener("pointermove", onPointerMove);
+        viewport.addEventListener("pointerup", endDrag);
+        viewport.addEventListener("pointercancel", endDrag);
+        viewport.addEventListener("pointerleave", () => {
+            if (!isDragging) return;
+            isDragging = false;
+            viewport.classList.remove("is-dragging");
+            snapToNearest();
+            startAutoAdvance();
+        });
+
+        window.addEventListener("resize", measure);
+        track.addEventListener("transitionend", () => {
+            const normalized = normalizeOffset(offset);
+            if (normalized !== offset) {
+                offset = normalized;
+                applyTransform(false);
+            }
+        });
+
+        measure();
+        startAutoAdvance();
+
+        document.addEventListener("astro:before-swap", () => {
+            stopAutoAdvance();
+            window.removeEventListener("resize", measure);
+        }, { once: true });
+    }
+</script>
+
+<style>
+    .client-strip {
+        width: 80%;
+        position: relative;
+        overflow: hidden;
+        background: #060b1d;
+        padding: 3rem 0;
+        margin: auto;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .client-strip__viewport {
+        overflow: hidden;
+        cursor: grab;
+        touch-action: pan-y;
+        user-select: none;
+    }
+    .client-strip__viewport.is-dragging {
+        cursor: grabbing;
+    }
+    .client-strip__track {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        gap: clamp(3rem, 5vw, 5.5rem);
+        will-change: transform;
+    }
+    .client-strip__item {
+        flex: 0 0 auto;
+        min-width: clamp(120px, 13vw, 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .client-strip__item img {
+        display: block;
+        max-width: 100%;
+        height: clamp(26px, 3vw, 40px);
+        width: auto;
+        object-fit: contain;
+        opacity: 0.94;
+        filter: brightness(0) invert(1);
+        pointer-events: none;
+    }
+    .client-strip__fade {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: clamp(28px, 8vw, 120px);
+        z-index: 2;
+        pointer-events: none;
+    }
+    .client-strip__fade--left {
+        left: 0;
+        background: linear-gradient(90deg, #060b1d 0%, rgba(6, 11, 29, 0) 100%);
+    }
+    .client-strip__fade--right {
+        right: 0;
+        background: linear-gradient(270deg, #060b1d 0%, rgba(6, 11, 29, 0) 100%);
+    }
+    @media screen and (max-width: 768px) {
+        .client-strip {
+            padding: 1.35rem 0;
+        }
+        .client-strip__track {
+            gap: clamp(1.5rem, 5vw, 2.5rem);
+        }
+        .client-strip__item {
+            min-width: clamp(96px, 24vw, 132px);
+        }
+        .client-strip__item img {
+            height: clamp(20px, 5.2vw, 28px);
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .client-strip {
+            padding: 1.1rem 0;
+        }
+        .client-strip__track {
+            gap: 1.1rem;
+        }
+        .client-strip__item {
+            min-width: clamp(84px, 26vw, 108px);
+        }
+        .client-strip__item img {
+            height: clamp(18px, 5.6vw, 22px);
+        }
+    }
+</style>

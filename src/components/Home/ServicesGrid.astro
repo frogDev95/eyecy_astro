@@ -1,2 +1,202 @@
 ---
+const services = [
+    {
+        title: "Mobile Design",
+        description:
+            "Expertly blending UI/UX principles for optimal functionality on every mobile device.",
+        icon: "/images/home/servicegrid/icons/mobile-design.png",
+    },
+    {
+        title: "Website Design",
+        description:
+            "We seamlessly blend aesthetics and functionality, ensuring your online presence captivates and engages visitors.",
+        icon: "/images/home/servicegrid/icons/website-design.png",
+    },
+    {
+        title: "Social Media",
+        description:
+            "We create meaningful connections and expand your brand's online community.",
+        icon: "/images/home/servicegrid/icons/digital-marketing.png",
+    },
+    {
+        title: "Website Development",
+        description:
+            "We go beyond generic themes, crafting unique websites tailored to your brand, ensuring a distinctive and engaging digital footprint.",
+        icon: "/images/home/servicegrid/icons/web-development.png",
+    },
+    {
+        title: "Web Hosting",
+        description:
+            "Reliable and scalable hosting, ensuring optimal performance, security, and seamless user experiences for your website visitors.",
+        icon: "/images/home/servicegrid/icons/web-hosting.png",
+    },
+    {
+        title: "SEO",
+        description:
+            "Elevate your online visibility with our SEO strategies, ensuring that your brand shines prominently in search engine results.",
+        icon: "/images/home/servicegrid/icons/seo.png",
+    },
+];
 ---
+
+<section class="services-grid" aria-labelledby="services-grid-title">
+    <div class="services-grid__inner">
+        <header class="services-grid__header">
+            <p class="services-grid__eyebrow">What We Do</p>
+            <h2 id="services-grid-title">Our Services</h2>
+        </header>
+
+        <div class="services-grid__list">
+            {
+                services.map((service) => (
+                    <article class="service-card">
+                        <div class="service-card__body">
+                            <div class="service-card__icon" aria-hidden="true">
+                                <img src={service.icon} alt="" loading="lazy" />
+                            </div>
+                            <h3 class="mt-5">{service.title}</h3>
+                            <p>{service.description}</p>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .services-grid {
+        position: relative;
+        overflow: hidden;
+        margin: auto;
+        margin-top: 150px;
+        padding-bottom: 50px;
+        background-image: url("/images/home/servicegrid/servicegrid_bg.png");
+        background-position:center;
+        background-size: cover;
+        background-repeat:no-repeat;
+    }
+    .services-grid__inner {
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        padding: 3% 0px;
+        width: 80%;
+        margin: auto;
+    }
+    .services-grid__header {
+        text-align: center;
+        margin-bottom: 87px;
+    }
+    .services-grid__eyebrow {
+        width: fit-content;
+        margin: auto;
+        color: #333;
+        font-family: Montserrat, sans-serif;
+        font-size: clamp(1rem, 0.75rem + 0.8vw, 1.45rem);
+        font-weight: 800;
+        line-height: 1.2;
+        text-transform: uppercase;
+        background-image: linear-gradient(
+            90deg,
+            #8d71fe 6px,
+            #7661fe 23px,
+            #4d53fe 45px,
+            #3f7cfe 57px,
+            #349dfb 71px,
+            #28c2ff 85px
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding-bottom: 10px;
+        font-family: "Montserrat", Helvetica, Arial, Lucida, sans-serif;
+        font-weight: 800;
+        font-size: 21px;
+        text-align: center;
+    }
+    .services-grid__header h2 {
+        font-family: "Jost", Helvetica, Arial, Lucida, sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        color: #ffffff !important;
+        line-height: 60px;
+        text-align: center;
+        margin-top: 0px;
+        text-transform: uppercase;
+    }
+    .services-grid__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px;
+    }
+    .service-card {
+        position: relative;
+        min-height: 284px;
+    }
+    .service-card__body {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: #131928;
+        padding: 35px 30px 30px 30px;
+    }
+    .service-card__body.np {
+        padding: 0px;
+    }
+    .service-card:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        border: 1px solid #1f1f36;
+        background-color: #fff0;
+        left: 10px;
+        top: 10px;
+        z-index: -1;
+        transition: 0.3s;
+    }
+    .service-card__icon {
+        position: relative;
+        height: 51px;
+        margin-left: 15px;
+        display: flex;
+        align-items: flex-end;
+    }
+    .service-card__icon img {
+        padding-left: 15px;
+    }
+
+    .service-card__icon:after {
+        position: absolute;
+        content: "";
+        width: 40px;
+        height: 40px;
+        background-color: #ffffffb0;
+        opacity: 0.08;
+        border-radius: 50%;
+    }
+    .service-card h3 {
+        color: #fff;
+        font-family: Jost;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-bottom: 0;
+        text-align: start;
+    }
+    .service-card__body p {
+        margin-top: 25px;
+        position: relative;
+        color: #fff;
+        font-family: Jost;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.55;
+        margin-bottom: 0;
+        max-width: 360px;
+    }
+</style>

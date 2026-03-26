@@ -1960,8 +1960,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 500px !important;
-        transform: scale(1.6) translateY(26px);
+        min-height: 590px;
+        transform: scale(1.6);
         background: transparent;
         mix-blend-mode: screen;
     }
@@ -2046,7 +2046,8 @@
     }
     @media screen and (max-width: 985px) {
         .animation-part {
-            transform: scale(0.9) translateY(-10px);
+            min-height: auto;
+            transform: scale(1.1) translateY(30px);
         }
     }
 </style>

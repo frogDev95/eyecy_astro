@@ -1,9 +1,8 @@
 ---
-import Header from "../layout/header.astro";
 import AnimationContainer from "./AnimationContainer.astro";
 ---
 
-<div class="hero relative w-full overflow-hidden">
+<div class="hero relative w-full z-1">
     <img
         class="absolute top-[-15px] left-0 img-sub"
         src="/images/home/hero/top_left.png"
@@ -19,12 +18,13 @@ import AnimationContainer from "./AnimationContainer.astro";
         src="/images/home/hero/background.png"
         alt=""
     />
-    <img
-        class="absolute bottom-[-35px] right-[-30px] img-sub"
-        src="/images/home/hero/bottom_right.png"
-        alt=""
-    />
-    <Header />
+    <div class="absolute bottom-0 right-0 overflow-hidden">
+        <img
+            class="img-sub img-4"
+            src="/images/home/hero/bottom_right.png"
+            alt=""
+        />
+    </div>
     <section class="hero-shell z-0">
         <aside class="social-rail hidden csm:flex" aria-label="Social links">
             <div class="social-rail__label">SOCIAL MEDIA</div>
@@ -54,21 +54,23 @@ import AnimationContainer from "./AnimationContainer.astro";
                     websites design and development with over 8 years of
                     experience in the Cayman Islands.
                 </p>
-                <a href="#" class="hero-button">
-                    <span>Learn more</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                    >
-                        <path
-                            d="M10.7979 9.48683C10.6654 9.494 10.5354 9.44828 10.4366 9.3597C10.3378 9.27112 10.2781 9.14694 10.2708 9.01442L9.87177 1.73545L0.874268 11.775C0.785619 11.8739 0.661307 11.9335 0.528678 11.9408C0.39605 11.9481 0.26597 11.9023 0.167054 11.8137C0.0681379 11.725 0.00848936 11.6007 0.00123006 11.4681C-0.00602952 11.3355 0.0396948 11.2054 0.128344 11.1065L9.12585 1.06695L1.84681 1.46478C1.71707 1.4673 1.59142 1.41936 1.49632 1.33106C1.40123 1.24276 1.34412 1.121 1.33702 0.991426C1.32993 0.861852 1.37341 0.734584 1.4583 0.636434C1.54319 0.538283 1.66286 0.476914 1.7921 0.465255L10.2787 0.000730388C10.4112 -0.00644076 10.5412 0.0392841 10.64 0.127861C10.7388 0.216438 10.7985 0.340624 10.8058 0.47314L11.2703 8.95971C11.2775 9.09224 11.2318 9.22219 11.1432 9.32102C11.0546 9.41986 10.9304 9.47949 10.7979 9.48683Z"
-                            fill="white"></path>
-                    </svg>
-                </a>
-                <div class="w-fit relative">
+                <div class="w-full">
+                    <a href="#" class="hero-button">
+                        <span>Learn more</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                        >
+                            <path
+                                d="M10.7979 9.48683C10.6654 9.494 10.5354 9.44828 10.4366 9.3597C10.3378 9.27112 10.2781 9.14694 10.2708 9.01442L9.87177 1.73545L0.874268 11.775C0.785619 11.8739 0.661307 11.9335 0.528678 11.9408C0.39605 11.9481 0.26597 11.9023 0.167054 11.8137C0.0681379 11.725 0.00848936 11.6007 0.00123006 11.4681C-0.00602952 11.3355 0.0396948 11.2054 0.128344 11.1065L9.12585 1.06695L1.84681 1.46478C1.71707 1.4673 1.59142 1.41936 1.49632 1.33106C1.40123 1.24276 1.34412 1.121 1.33702 0.991426C1.32993 0.861852 1.37341 0.734584 1.4583 0.636434C1.54319 0.538283 1.66286 0.476914 1.7921 0.465255L10.2787 0.000730388C10.4112 -0.00644076 10.5412 0.0392841 10.64 0.127861C10.7388 0.216438 10.7985 0.340624 10.8058 0.47314L11.2703 8.95971C11.2775 9.09224 11.2318 9.22219 11.1432 9.32102C11.0546 9.41986 10.9304 9.47949 10.7979 9.48683Z"
+                                fill="white"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="w-fit relative w-full">
                     <div class="scroll-cue">
                         <div class="scroll-cue__label">SCROLL DOWN</div>
                         <a
@@ -100,21 +102,25 @@ import AnimationContainer from "./AnimationContainer.astro";
 <style>
     .hero-main {
         width: 80%;
-        grid-template-columns: 57.8% 1fr;
+        grid-template-columns: 63.3% 1fr;
+        padding: 2% 0 0 2%;
     }
     .hero-copy {
         padding-right: 5.5%;
     }
     img {
-        z-index: -2;
+        z-index: -1;
         pointer-events: none;
     }
     .img-sub {
-        z-index: -1;
+        z-index: 0;
+    }
+    .img-4 {
+        transform: translate(30px, 35px);
     }
     .hero-shell {
         position: relative;
-        margin-top: 67px;
+        padding-top: 161px;
     }
     .social-rail {
         position: absolute;
@@ -178,12 +184,14 @@ import AnimationContainer from "./AnimationContainer.astro";
         }
     }
     .hero-kicker {
-        width: fit-content;
+        width: 100%;
         font-family: Montserrat;
         font-size: 21px;
         font-style: normal;
         font-weight: 800;
         line-height: normal;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
         background: linear-gradient(
             90deg,
             #8d71fe 6.72%,
@@ -199,10 +207,10 @@ import AnimationContainer from "./AnimationContainer.astro";
     .hero-copy h1 {
         color: white;
         font-family: Montserrat;
-        font-size: 54px;
+        font-size: clamp(2.2rem, 1.2rem + 3.6vw, 3.375rem);
         font-style: normal;
         font-weight: 800;
-        line-height: 125%;
+        line-height: 1.15;
         text-transform: uppercase;
         padding-top: 6px;
     }
@@ -225,8 +233,8 @@ import AnimationContainer from "./AnimationContainer.astro";
         margin: 1.35rem 0 0;
         font-family: "Jost", Helvetica, Arial, Lucida, sans-serif;
         font-weight: 500;
-        font-size: 26px;
-        line-height: 40px;
+        font-size: clamp(1rem, 0.74rem + 1.2vw, 1.625rem);
+        line-height: clamp(1.55rem, 1.2rem + 1.45vw, 2.5rem);
         color: white;
         max-width: 700px;
     }
@@ -245,7 +253,7 @@ import AnimationContainer from "./AnimationContainer.astro";
         border-width: 0px !important;
         border-radius: 10px;
         letter-spacing: 1.5px;
-        font-size: 16px;
+        font-size: clamp(0.9rem, 0.82rem + 0.22vw, 1rem);
         background-image: linear-gradient(
             270deg,
             #25c7fe 6px,
@@ -323,6 +331,67 @@ import AnimationContainer from "./AnimationContainer.astro";
         }
         50% {
             border-color: #ffffff;
+        }
+    }
+    @media screen and (max-width: 985px) {
+        .hero-main {
+            padding: 0px;
+        }
+        .hero {
+            min-height: auto;
+            padding-bottom: 70px;
+        }
+        .img-sub {
+            display: none;
+        }
+        .hero-shell {
+            padding-top: 100px;
+        }
+        .hero-copy {
+            padding-right: 0px;
+        }
+        .scroll-cue {
+            gap: 10px;
+            .scroll-cue__label {
+                font-size: calc(6px + 1vw);
+            }
+            .scroll-cue__button {
+                width: calc(40px + 1vw);
+                height: calc(40px + 1vw);
+                span {
+                    width: calc(25px + 1vw);
+                    height: calc(25px + 1vw);
+                    svg {
+                        width: calc(8px + 1vw);
+                        height: calc(8px + 1vw);
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 640px) {
+        .hero-kicker {
+            line-height: 1.35;
+            letter-spacing: 0.09em;
+            word-break: break-word;
+        }
+        .hero-copy h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            padding-top: 0.4rem;
+        }
+        .hero-description {
+            margin-top: 1rem;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .hero-button {
+            font-size: 0.875rem;
+            letter-spacing: 0.08em;
+            padding-top: 0.8rem !important;
+            padding-right: 0.9rem !important;
+            padding-bottom: 0.8rem !important;
+            padding-left: 1.1rem !important;
         }
     }
 </style>

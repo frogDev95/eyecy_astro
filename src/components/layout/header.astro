@@ -3,7 +3,7 @@ import ListHeader from "./listHeader.astro";
 import ServicesDropdown from "./ServicesDropdown.tsx";
 ---
 
-<div>
+<div class="absolute w-full z-2">
     <div class="csm:hidden">
         <ListHeader />
     </div>
@@ -95,6 +95,7 @@ import ServicesDropdown from "./ServicesDropdown.tsx";
         margin-left: 4px;
     }
     .talk-btn:hover {
+        cursor: pointer;
         transform: scale(1.1);
     }
     .talk-btn:hover svg {
