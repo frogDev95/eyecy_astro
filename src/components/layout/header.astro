@@ -7,17 +7,17 @@ import ServicesDropdown from "./ServicesDropdown.tsx";
     <div class="csm:hidden">
         <ListHeader />
     </div>
-    <div class="py-2 grid-cols-24 gap-4 hidden csm:grid">
+    <div class="py-3 grid-cols-24 csm:gap-4 hidden csm:grid">
         <div class="col-span-24 cxl:col-span-7">
             <div class="flex w-full h-full cxl:pl-[10vw] justify-center">
                 <img src="/images/common/logo.png" class="z-3" />
             </div>
         </div>
-        <div class="col-span-24 cxl:col-span-16 2xl:col-span-10">
+        <div class="col-span-24 cxl:col-span-16 2xl:col-span-10 z-1">
             <nav
-                class="flex gap-10 items-center h-full justify-center cxl:justify-start 3xl:pl-[35px]"
+                class="flex items-center h-full justify-center cxl:justify-start 3xl:pl-[37px] leading-[26px] csm:pt-2"
             >
-                <div>
+                <div class="flex gap-3">
                     <a href="#" class="">HOME</a>
                     <a href="#" class="">ABOUT</a>
                     <ServicesDropdown client:idle />
@@ -28,7 +28,7 @@ import ServicesDropdown from "./ServicesDropdown.tsx";
                 </div>
             </nav>
         </div>
-        <div class="col-span-7 hidden 2xl:block">
+        <div class="col-span-7 hidden 2xl:block pl-2.5 pt-2.5">
             <div class="flex items-center justify-left h-full">
                 <button class="talk-btn text-white">
                     <span>Let's Talk</span>
@@ -84,13 +84,15 @@ import ServicesDropdown from "./ServicesDropdown.tsx";
             #25c9ff 82px
         );
         padding-top: 10px !important;
-        padding-right: 35px !important;
+        padding-right: 15px !important;
         padding-bottom: 10px !important;
         padding-left: 25px !important;
     }
     .talk-btn svg {
         transition: transform 1s ease;
+        transform: rotate(9deg);
         transform-origin: center;
+        margin-left: 4px;
     }
     .talk-btn:hover {
         transform: scale(1.1);
