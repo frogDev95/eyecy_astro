@@ -1,0 +1,277 @@
+---
+const story = {
+    eyebrow: "ABOUT EYECAY",
+    title: "CAYMAN ISLANDS DIGITAL AGENCY",
+    body: "Eyecay was founded in 2015 with one reason in mind, and that is to create functional websites that perform at high speed without compromising on the design. Our goal is to give you a whole package.",
+};
+---
+
+<section
+    class="company-story"
+    aria-labelledby="company-story-title"
+    data-company-story
+>
+    <div class="company-story__inner">
+        <div class="company-story__media" aria-hidden="true">
+            <div class="relative">
+                <img
+                    class="company-story__main-image z-2 relative"
+                    src="/images/home/CompanyStory/main-image.avif"
+                    alt=""
+                />
+                <img
+                    class="company-story__shape company-story__shape--one z-1"
+                    src="/images/home/CompanyStory/asset-1.avif"
+                    alt=""
+                />
+                <img
+                    class="company-story__shape company-story__shape--two z-3"
+                    src="/images/home/CompanyStory/asset-2.avif"
+                    alt=""
+                />
+            </div>
+        </div>
+
+        <div class="company-story__copy">
+            <p class="company-story__eyebrow">{story.eyebrow}</p>
+            <h2 id="company-story-title">{story.title}</h2>
+            <p class="company-story__description">{story.body}</p>
+
+            <a
+                href="/about"
+                class="company-story__button"
+                aria-label="Learn more about Eyecay"
+            >
+                <span>LEARN MORE</span>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M10.7979 9.48683C10.6654 9.494 10.5354 9.44828 10.4366 9.3597C10.3378 9.27112 10.2781 9.14694 10.2708 9.01442L9.87177 1.73545L0.874268 11.775C0.785619 11.8739 0.661307 11.9335 0.528678 11.9408C0.39605 11.9481 0.26597 11.9023 0.167054 11.8137C0.0681379 11.725 0.00848936 11.6007 0.00123006 11.4681C-0.00602952 11.3355 0.0396948 11.2054 0.128344 11.1065L9.12585 1.06695L1.84681 1.46478C1.71707 1.4673 1.59142 1.41936 1.49632 1.33106C1.40123 1.24276 1.34412 1.121 1.33702 0.991426C1.32993 0.861852 1.37341 0.734584 1.4583 0.636434C1.54319 0.538283 1.66286 0.476914 1.7921 0.465255L10.2787 0.000730388C10.4112 -0.00644076 10.5412 0.0392841 10.64 0.127861C10.7388 0.216438 10.7985 0.340624 10.8058 0.47314L11.2703 8.95971C11.2775 9.09224 11.2318 9.22219 11.1432 9.32102C11.0546 9.41986 10.9304 9.47949 10.7979 9.48683Z"
+                        fill="white"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    const companyStory = document.querySelector("[data-company-story]");
+
+    if (companyStory) {
+        const updateCompanyStoryMotion = () => {
+            const rect = companyStory.getBoundingClientRect();
+            const viewportHeight =
+                window.innerHeight || document.documentElement.clientHeight;
+            const totalTravel = viewportHeight + rect.height;
+            const progress = Math.min(
+                1,
+                Math.max(0, (viewportHeight - rect.top) / totalTravel)
+            );
+
+            companyStory.style.setProperty(
+                "--company-story-shape-one-shift",
+                `${-52 * progress}px`
+            );
+            companyStory.style.setProperty(
+                "--company-story-shape-two-shift",
+                `${56 * progress}px`
+            );
+        };
+
+        const requestMotionUpdate = () =>
+            window.requestAnimationFrame(updateCompanyStoryMotion);
+
+        window.addEventListener("scroll", requestMotionUpdate, { passive: true });
+        window.addEventListener("resize", requestMotionUpdate);
+        window.requestAnimationFrame(updateCompanyStoryMotion);
+
+        document.addEventListener("astro:before-swap", () => {
+            window.removeEventListener("scroll", requestMotionUpdate);
+            window.removeEventListener("resize", requestMotionUpdate);
+        }, { once: true });
+    }
+</script>
+
+<style>
+    .company-story {
+        --company-story-shape-one-shift: 0px;
+        --company-story-shape-two-shift: 0px;
+        position: relative;
+        overflow: hidden;
+        background: #070d1d;
+        padding: clamp(4.5rem, 7vw, 6.85rem) 0 clamp(5rem, 8vw, 7.15rem);
+    }
+
+    .company-story__inner {
+        width: 80%;
+        margin: 0 auto;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 48.5% 1fr;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3%;
+    }
+
+    .company-story__media {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .company-story__main-image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .company-story__shape {
+        position: absolute;
+        pointer-events: none;
+        will-change: transform;
+    }
+
+    .company-story__shape--one {
+        top: 3.2%;
+        left: -28%;
+        width: 44.4%;
+        max-width: 285px;
+        transform: translate3d(var(--company-story-shape-one-shift), 0, 0);
+        transition: transform 0.12s linear;
+    }
+
+    .company-story__shape--two {
+        top: 10.5%;
+        right: 10.5%;
+        width: 22.95%;
+        max-width: 141px;
+        transform: translate3d(var(--company-story-shape-two-shift), 0, 0);
+        transition: transform 0.12s linear;
+    }
+
+    .company-story__copy {
+        padding-top: clamp(0.3rem, 0.8vw, 1rem);
+    }
+
+    .company-story__eyebrow {
+        font-family: "Montserrat", Helvetica, Arial, Lucida, sans-serif;
+        font-weight: 800;
+        font-size: 21px;
+        background: linear-gradient(
+            90deg,
+            #8d71fe 6px,
+            #7661fe 23px,
+            #4d53fe 45px,
+            #3f7cfe 57px,
+            #349dfb 71px,
+            #28c2ff 85px
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding-bottom: 10px;
+        line-height: 1em;
+        text-align: left;
+        margin-bottom: 0px;
+    }
+
+    .company-story__copy h2 {
+        font-family: "Jost", Helvetica, Arial, Lucida, sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        color: #ffffff !important;
+        line-height: 60px;
+        padding-bottom: 10px;
+        margin-bottom: 3.093%;
+    }
+
+    .company-story__description {
+        margin-bottom: 30px;
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: "Jost", Helvetica, Arial, Lucida, sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 31px;
+        max-width: 620px;
+    }
+
+    .company-story__button {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #fff;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.7rem;
+        text-transform: capitalize;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+        border-width: 0 !important;
+        border-radius: 10px;
+        letter-spacing: 1.5px;
+        font-size: clamp(0.9rem, 0.82rem + 0.22vw, 1rem);
+        background-image: linear-gradient(
+            270deg,
+            #25c7fe 6px,
+            #3791fd 24px,
+            #407aff 35px,
+            #5449fe 57px,
+            #7661fe 75px,
+            #8d71fe 82px,
+            #8d71fe 90px
+        );
+        padding-top: 10px !important;
+        padding-right: 15px !important;
+        padding-bottom: 10px !important;
+        padding-left: 25px !important;
+        text-transform: uppercase;
+    }
+
+    .company-story__button svg {
+        transition: transform 1s ease;
+        transform: rotate(9deg);
+        transform-origin: center;
+        margin-left: 4px;
+    }
+
+    .company-story__button:hover {
+        transform: scale(1.1);
+    }
+
+    .company-story__button:hover svg {
+        transform: rotate(360deg);
+    }
+    @media (max-width: 985px) {
+        .company-story__inner {
+            display: block;
+            width: calc(100% - 2rem);
+        }
+        .company-story__media {
+            max-width: 614px;
+            margin: 0 auto;
+        }
+        .company-story__copy {
+            padding-top: 72px;
+            text-align: center;
+        }
+        .company-story__eyebrow {
+            text-align: center;
+        }
+        .company-story__shape--one {
+            top: 4%;
+            left: -29%;
+            width: 44%;
+        }
+        .company-story__shape--two {
+            top: 15%;
+            right: 5.5%;
+            width: 22%;
+        }
+    }
+</style>
