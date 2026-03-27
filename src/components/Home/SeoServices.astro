@@ -1,2 +1,375 @@
 ---
+const services = [
+    {
+        title: "Development",
+        description:
+            "Responsive Website Development, Mobile Development, Content Management System, WordPress Development, Online Payment System, eCommerce",
+        href: "/services-website-development/",
+        iconWhite: "/images/home/seoService/development-icon-white.png",
+        iconGradient: "/images/home/seoService/development-icon-gradient.png",
+    },
+    {
+        title: "Marketing",
+        description:
+            "Search Engine Optimization, Pay-Per-Click Marketing, Email Marketing, Social Media Marketing, Conversion Rate Optimization, Content Strategy & Copywriting",
+        href: "/services-online-marketing/",
+        iconWhite: "/images/home/seoService/marketing-icon-white.png",
+        iconGradient: "/images/home/seoService/marketing-icon-gradient.png",
+    },
+    {
+        title: "Branding",
+        description:
+            "Brand Strategy, Logo Design, Brand Identity, Brand Development, Brand Collateral Design, Brand Consulting, Event Branding, Brand Research",
+        href: "/services-brand/",
+        iconWhite: "/images/home/seoService/branding-icon-white.png",
+        iconGradient: "/images/home/seoService/branding-icon-gradient.png",
+    },
+    {
+        title: "Design",
+        description:
+            "Website Design, Ecommerce Design, Mobile Design (UI UX design for mobile), Logo Design, Brand Design, Print Design",
+        href: "/services-creative-design/",
+        iconWhite: "/images/home/seoService/design-icon-white.png",
+        iconGradient: "/images/home/seoService/design-icon-gradient.png",
+    },
+    {
+        title: "Web Hosting",
+        description:
+            "Website Design, Ecommerce Design, Mobile Design (UI UX design for mobile), Logo Design, Brand Design, Print Design",
+        href: "/services-web-hosting/",
+        iconWhite: "/images/home/seoService/web-hosting-icon-white.png",
+        iconGradient: "/images/home/seoService/web-hosting-icon-gradient.png",
+    },
+];
 ---
+
+<section class="seo-services" aria-labelledby="seo-services-title">
+    <div class="seo-services__inner">
+        <div class="seo-services__heading">
+            <p class="seo-services__eyebrow">WHAT WE DO</p>
+            <h2 id="seo-services-title">
+                <span>OUR SERVICES</span>
+            </h2>
+        </div>
+
+        <div class="seo-services__list">
+            {
+                services.map((service) => (
+                    <article class="seo-services__item">
+                        <div class="seo-services__content">
+                            <div class="seo-services__icon" aria-hidden="true">
+                                <img
+                                    class="seo-services__icon-image seo-services__icon-image--white"
+                                    src={service.iconWhite}
+                                    alt=""
+                                />
+                                <img
+                                    class="seo-services__icon-image seo-services__icon-image--gradient"
+                                    src={service.iconGradient}
+                                    alt=""
+                                />
+                            </div>
+
+                            <div class="seo-services__copy">
+                                <h3>{service.title}</h3>
+                                <div class="flex">
+                                    <p>{service.description}</p>
+                                    <div class="seo-services__action">
+                                        <a
+                                            class="seo-services__button"
+                                            href={service.href}
+                                        >
+                                            <span>Learn More</span>
+                                        </a>
+
+                                        <a
+                                            class="seo-services__arrow"
+                                            href={service.href}
+                                            aria-label={`Learn more about ${service.title}`}
+                                        >
+                                            <img
+                                                class="seo-services__arrow-image seo-services__arrow-image--base"
+                                                src="/images/home/seoService/arrow-icon-white.avif"
+                                                alt=""
+                                                aria-hidden="true"
+                                            />
+                                            <img
+                                                class="seo-services__arrow-image seo-services__arrow-image--hover"
+                                                src="/images/home/seoService/arrow-icon-gradient.avif"
+                                                alt=""
+                                                aria-hidden="true"
+                                            />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .seo-services {
+        background: #070d1d;
+        padding: 96px 0;
+    }
+
+    .seo-services__inner {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .seo-services__heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 48px 0;
+    }
+
+    .seo-services__eyebrow {
+        width: fit-content;
+        margin: 0;
+        padding-bottom: 10px;
+        background-image: linear-gradient(
+            90deg,
+            #8d71fe 6px,
+            #7661fe 23px,
+            #4d53fe 45px,
+            #3f7cfe 57px,
+            #349dfb 71px,
+            #28c2ff 85px
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: "Montserrat", Helvetica, Arial, Lucida, sans-serif;
+        font-size: 21px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 1em;
+        letter-spacing: 0.14em;
+        text-align: center;
+        text-transform: uppercase;
+        color: transparent;
+    }
+
+    .seo-services__heading h2 {
+        margin: 0;
+        font-family: "Jost", Helvetica, Arial, Lucida, sans-serif;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 60px;
+        text-align: center;
+        padding-bottom: 10px;
+        text-transform: uppercase;
+        color: #ffffff !important;
+    }
+
+    .seo-services__heading h2 span {
+        position: relative;
+        display: inline-block;
+        color: #ffffff;
+        text-shadow:
+            1.5px 0 0 rgba(255, 88, 151, 0.95),
+            -1.5px 0 0 rgba(45, 196, 255, 0.9);
+    }
+
+    .seo-services__list {
+        position: relative;
+        max-width: 1050px;
+        margin: auto;
+        padding: 2% 0;
+    }
+
+    .seo-services__item {
+        position: relative;
+        padding-top: 10px;
+        padding-bottom: 25px;
+    }
+
+    .seo-services__item:before,
+    .seo-services__item:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        text-align: center;
+    }
+
+    .seo-services__item:before {
+        background-color: #373737;
+    }
+
+    .seo-services__item:after {
+        background: linear-gradient(
+            to right,
+            #674dfa 0%,
+            #8b539e 50%,
+            #e53782 100%
+        );
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: all 0.6s ease-out;
+    }
+
+    .seo-services__content {
+        display: grid;
+        grid-template-columns: 65px minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .seo-services__icon {
+        position: relative;
+        width: 65px;
+        height: 65px;
+        margin-top: 12px;
+    }
+
+    .seo-services__icon-image {
+        position: absolute;
+        inset: 0;
+        object-fit: contain;
+    }
+
+    .seo-services__icon-image--gradient {
+        opacity: 0;
+    }
+
+    .seo-services__copy h3 {
+        margin: 0;
+        padding-bottom: 10px;
+        color: #ffffff;
+        font-family: Jost, Helvetica, Arial, Lucida, sans-serif;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 124.27%;
+        text-transform: capitalize;
+    }
+
+    .seo-services__copy p {
+        margin-right: 10px;
+        max-width: 600px;
+        color: #fff;
+        font-family: Jost, Helvetica, Arial, Lucida, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .seo-services__action {
+        display: flex;
+        align-items: center;
+    }
+
+    .seo-services__button {
+        cursor: pointer;
+        width: 160px;
+        background: none;
+        border: 2px solid #fff;
+        border-radius: 40px;
+        color: #fff;
+        font-family: Jost, Helvetica, Arial, Lucida, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        padding: 11px 20px;
+        margin-right: 20px;
+        line-height: 124.27%;
+        text-transform: capitalize;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .seo-services__button span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .seo-services__button::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #5956f0 0%, #ff50b8 100%);
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.3s linear;
+    }
+
+    .seo-services__arrow {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    .seo-services__arrow-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .seo-services__arrow-image--base {
+        opacity: 1;
+        transition: transform 0.3s ease;
+    }
+
+    .seo-services__arrow-image--hover {
+        opacity: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .seo-services__item:hover .seo-services__icon-image--gradient {
+        opacity: 1;
+    }
+
+    .seo-services__item:hover .seo-services__icon-image--white {
+        opacity: 0;
+    }
+
+    .seo-services__item:hover .seo-services__copy :is(h3, p) {
+        background: linear-gradient(90deg, #5956f0 0%, #ff50b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+
+    .seo-services__button:hover {
+        color: #fff;
+    }
+
+    .seo-services__button:hover::before {
+        transform: scaleX(1);
+    }
+
+    .seo-services__item:hover .seo-services__arrow-image--base {
+        opacity: 0;
+        transform: rotate(50deg);
+    }
+
+    .seo-services__item:hover .seo-services__arrow-image--hover {
+        opacity: 1;
+        transform: rotate(50deg);
+    }
+
+    .seo-services__item:hover::after {
+        transform: scaleX(1);
+    }
+</style>
