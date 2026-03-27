@@ -287,8 +287,8 @@
 }
 @font-face {
     font-family: 'Enoway-Oblique';
-    src: url(/wp-content/themes/Divi-child/font/Enoway-Oblique.eot);
-    src: local('Enoway Oblique'),local('Enoway-Oblique'),url('/wp-content/themes/Divi-child/font/Enoway-Oblique.eot?#iefix') format('embedded-opentype'),url(/wp-content/themes/Divi-child/font/Enoway-Oblique.woff2) format('woff2'),url(/wp-content/themes/Divi-child/font/Enoway-Oblique.woff) format('woff'),url(/wp-content/themes/Divi-child/font/Enoway-Oblique.ttf) format('truetype');
+    src: url(/assets/font/Enoway-Oblique.eot);
+    src: local('Enoway Oblique'),local('Enoway-Oblique'),url('/assets/font/Enoway-Oblique.eot?#iefix') format('embedded-opentype'),url(/assets/font/Enoway-Oblique.woff2) format('woff2'),url(/assets/font/Enoway-Oblique.woff) format('woff'),url(/assets/font/Enoway-Oblique.ttf) format('truetype');
     font-weight: 400;
     font-style: italic;
     font-display: swap
@@ -296,8 +296,8 @@
 
 @font-face {
     font-family: 'Enoway';
-    src: url(/wp-content/themes/Divi-child/font/Enoway-Regular.eot);
-    src: local('Enoway Regular'),local('Enoway-Regular'),url('/wp-content/themes/Divi-child/font/Enoway-Regular.eot?#iefix') format('embedded-opentype'),url(/wp-content/themes/Divi-child/font/Enoway-Regular.woff2) format('woff2'),url(/wp-content/themes/Divi-child/font/Enoway-Regular.woff) format('woff'),url(/wp-content/themes/Divi-child/font/Enoway-Regular.ttf) format('truetype');
+    src: url(/assets/font/Enoway-Regular.eot);
+    src: local('Enoway Regular'),local('Enoway-Regular'),url('/assets/font/Enoway-Regular.eot?#iefix') format('embedded-opentype'),url(/assets/font/Enoway-Regular.woff2) format('woff2'),url(/assets/font/Enoway-Regular.woff) format('woff'),url(/assets/font/Enoway-Regular.ttf) format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap
@@ -308,7 +308,7 @@
     font-family: 'Gilroy-Bold';
     font-style: normal;
     font-weight: 400;
-    src: local('Gilroy-Bold'),url(/wp-content/themes/Divi-child/font/Gilroy-Bold.woff) format('woff')
+    src: local('Gilroy-Bold'),url(/assets/font/Gilroy-Bold.woff) format('woff')
 }
 
 @font-face {
@@ -316,7 +316,7 @@
     font-family: 'Gilroy-Heavy';
     font-style: normal;
     font-weight: 400;
-    src: local('Gilroy-Heavy'),url(/wp-content/themes/Divi-child/font/Gilroy-Heavy.woff) format('woff')
+    src: local('Gilroy-Heavy'),url(/assets/font/Gilroy-Heavy.woff) format('woff')
 }
 
 @font-face {
@@ -324,7 +324,7 @@
     font-family: 'Gilroy-Light';
     font-style: normal;
     font-weight: 400;
-    src: local('Gilroy-Light'),url(/wp-content/themes/Divi-child/font/Gilroy-Light.woff) format('woff')
+    src: local('Gilroy-Light'),url(/assets/font/Gilroy-Light.woff) format('woff')
 }
 
 @font-face {
@@ -332,7 +332,7 @@
     font-family: 'Gilroy-Medium';
     font-style: normal;
     font-weight: 400;
-    src: local('Gilroy-Medium'),url(/wp-content/themes/Divi-child/css/Gilroy-Medium.woff) format('woff')
+    src: local('Gilroy-Medium'),url(/assets/font/Gilroy-Medium.woff) format('woff')
 }
 
 @font-face {
@@ -340,5 +340,5 @@
     font-family: 'Gilroy-Regular';
     font-style: normal;
     font-weight: 400;
-    src: local('Gilroy-Regular'),url(/wp-content/themes/Divi-child/font/Gilroy-Regular.woff) format('woff')
+    src: local('Gilroy-Regular'),url(/assets/font/Gilroy-Regular.woff) format('woff')
 }

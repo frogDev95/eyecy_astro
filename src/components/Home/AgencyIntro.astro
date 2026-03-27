@@ -89,13 +89,7 @@ const repeatedBottomStreamItems = [
     .agency-intro {
         position: relative;
         overflow: hidden;
-        background:
-            radial-gradient(
-                circle at top,
-                rgba(84, 102, 255, 0.12),
-                transparent 32%
-            ),
-            #070d1d;
+        background-color: #070d1d !important;
         padding: clamp(4rem, 8vw, 7rem) 0;
     }
 
@@ -139,12 +133,12 @@ const repeatedBottomStreamItems = [
     }
 
     .agency-intro__track--left {
-        animation: agency-stream-left 17s linear infinite;
+        transform: calc(-150vw);
+        animation: agency-stream-right 17s linear infinite;
     }
 
     .agency-intro__track--right {
-        transform: translateX(-33.3333%);
-        animation: agency-stream-right 17s linear infinite;
+        animation: agency-stream-left 17s linear infinite;
     }
 
     .agency-intro__item {
@@ -164,8 +158,8 @@ const repeatedBottomStreamItems = [
     }
 
     .agency-intro__item img {
-        width: 58px;
-        height: 69px;
+        width: 55px;
+        height: 66px;
         object-fit: contain;
         flex: 0 0 auto;
     }
@@ -188,13 +182,13 @@ const repeatedBottomStreamItems = [
         }
 
         to {
-            transform: translateX(-33.3333%);
+            transform: translateX(calc(-150vw));
         }
     }
 
     @keyframes agency-stream-right {
         from {
-            transform: translateX(-33.3333%);
+            transform: translateX(calc(-150vw));
         }
 
         to {
@@ -202,34 +196,15 @@ const repeatedBottomStreamItems = [
         }
     }
 
-    @media (max-width: 768px) {
-        .agency-intro {
-            padding: 3.5rem 0 4.5rem;
+    @media (max-width: 985px) {
+        .agency-intro__band--top {
+            transform: translate(-50%, -100%);
         }
-
-        .agency-intro__streams {
-            height: 180px;
+        .agency-intro__band--bottom {
+            transform: translate(-50%);
         }
-
-        .agency-intro__band {
-            width: 150vw;
-        }
-
-        .agency-intro__track {
-            gap: 2rem;
-        }
-
-        .agency-intro__track--left,
-        .agency-intro__track--right {
-            animation-duration: 18s;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .agency-intro__track--left,
-        .agency-intro__track--right {
-            animation: none;
-            transform: translateX(0);
+        .agency-intro__item {
+            flex-direction: column;
         }
     }
 </style>
