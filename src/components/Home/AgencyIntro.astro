@@ -1,2 +1,235 @@
 ---
+const topStreamItems = [
+    "Website Development",
+    "Mobile App Development",
+    "Creative Design",
+    "Branding",
+    "Online Marketing",
+    "Web Hosting",
+];
+
+const bottomStreamItems = [
+    "Web Hosting",
+    "Online Marketing",
+    "Branding",
+    "Creative Design",
+    "Mobile App Development",
+    "Website Development",
+];
+
+const repeatedTopStreamItems = [
+    ...topStreamItems,
+    ...topStreamItems,
+    ...topStreamItems,
+];
+const repeatedBottomStreamItems = [
+    ...bottomStreamItems,
+    ...bottomStreamItems,
+    ...bottomStreamItems,
+];
 ---
+
+<section class="agency-intro" aria-label="Agency services">
+    <div class="agency-intro__streams">
+        <div class="agency-intro__band agency-intro__band--top">
+            <div class="agency-intro__viewport">
+                <div class="agency-intro__track agency-intro__track--left">
+                    {
+                        repeatedTopStreamItems.map((item, index) => (
+                            <div
+                                class="agency-intro__item agency-intro__item--light"
+                                aria-hidden={
+                                    index >= topStreamItems.length
+                                        ? "true"
+                                        : undefined
+                                }
+                            >
+                                <img
+                                    src="/images/common/mark.avif"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                                <span>{item}</span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="agency-intro__band agency-intro__band--bottom">
+            <div class="agency-intro__viewport">
+                <div class="agency-intro__track agency-intro__track--right">
+                    {
+                        repeatedBottomStreamItems.map((item, index) => (
+                            <div
+                                class="agency-intro__item agency-intro__item--dark"
+                                aria-hidden={
+                                    index >= bottomStreamItems.length
+                                        ? "true"
+                                        : undefined
+                                }
+                            >
+                                <img
+                                    src="/images/common/mark.avif"
+                                    alt=""
+                                    aria-hidden="true"
+                                />
+                                <span>{item}</span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .agency-intro {
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(
+                circle at top,
+                rgba(84, 102, 255, 0.12),
+                transparent 32%
+            ),
+            #070d1d;
+        padding: clamp(4rem, 8vw, 7rem) 0;
+    }
+
+    .agency-intro__streams {
+        position: relative;
+        height: clamp(180px, 22vw, 260px);
+    }
+
+    .agency-intro__band {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120vw;
+        overflow: hidden;
+        box-shadow: 0 14px 40px rgba(2, 7, 20, 0.28);
+        transform-origin: center center;
+    }
+
+    .agency-intro__band--top {
+        background: #5969fc;
+        transform: translate(-50%, -50%) rotate(3.3deg);
+    }
+
+    .agency-intro__band--bottom {
+        background: #55e6a5;
+        transform: translate(-50%, -50%) rotate(-3.3deg);
+        z-index: 1;
+    }
+
+    .agency-intro__viewport {
+        overflow: hidden;
+        padding: 20px 0;
+    }
+
+    .agency-intro__track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        gap: clamp(2.5rem, 4vw, 4.75rem);
+        will-change: transform;
+    }
+
+    .agency-intro__track--left {
+        animation: agency-stream-left 17s linear infinite;
+    }
+
+    .agency-intro__track--right {
+        transform: translateX(-33.3333%);
+        animation: agency-stream-right 17s linear infinite;
+    }
+
+    .agency-intro__item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-size: 34px;
+        color: #111;
+        padding-bottom: 0;
+        padding-left: 10px;
+        font-family: "enoway-oblique";
+        line-height: 1em;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .agency-intro__item img {
+        width: 58px;
+        height: 69px;
+        object-fit: contain;
+        flex: 0 0 auto;
+    }
+
+    .agency-intro__item--light {
+        color: #ffffff;
+    }
+
+    .agency-intro__item--light img {
+        filter: brightness(0) invert(1);
+    }
+
+    .agency-intro__item--dark img {
+        filter: brightness(0) saturate(100%);
+    }
+
+    @keyframes agency-stream-left {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-33.3333%);
+        }
+    }
+
+    @keyframes agency-stream-right {
+        from {
+            transform: translateX(-33.3333%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .agency-intro {
+            padding: 3.5rem 0 4.5rem;
+        }
+
+        .agency-intro__streams {
+            height: 180px;
+        }
+
+        .agency-intro__band {
+            width: 150vw;
+        }
+
+        .agency-intro__track {
+            gap: 2rem;
+        }
+
+        .agency-intro__track--left,
+        .agency-intro__track--right {
+            animation-duration: 18s;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .agency-intro__track--left,
+        .agency-intro__track--right {
+            animation: none;
+            transform: translateX(0);
+        }
+    }
+</style>
