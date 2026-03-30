@@ -1,2 +1,200 @@
 ---
+const showcase = {
+    eyebrow: "WHAT WE DO",
+    title: "EXPERT SEO SERVICES",
+    description:
+        "A beautiful website doesn't mean anything if you can't find it in the main browsers. A proper search engine optimization will get your website to the top of the search. Learn more about our expert SEO services.",
+    href: "/seo/",
+    image: "/images/home/Portfolio/main.avif",
+};
 ---
+
+<section class="portfolio-showcase" aria-labelledby="portfolio-showcase-title">
+    <div class="portfolio-showcase__inner">
+        <div class="portfolio-showcase__visual" aria-hidden="true">
+            <img
+                class="portfolio-showcase__image"
+                src={showcase.image}
+                alt=""
+                loading="lazy"
+            />
+        </div>
+
+        <div class="portfolio-showcase__content">
+            <p class="portfolio-showcase__eyebrow">{showcase.eyebrow}</p>
+            <h2 id="portfolio-showcase-title">{showcase.title}</h2>
+            <p class="portfolio-showcase__description">
+                {showcase.description}
+            </p>
+
+            <a class="portfolio-showcase__button" href={showcase.href}>
+                <span>LEARN MORE</span>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M10.7979 9.48683C10.6654 9.494 10.5354 9.44828 10.4366 9.3597C10.3378 9.27112 10.2781 9.14694 10.2708 9.01442L9.87177 1.73545L0.874268 11.775C0.785619 11.8739 0.661307 11.9335 0.528678 11.9408C0.39605 11.9481 0.26597 11.9023 0.167054 11.8137C0.0681379 11.725 0.00848936 11.6007 0.00123006 11.4681C-0.00602952 11.3355 0.0396948 11.2054 0.128344 11.1065L9.12585 1.06695L1.84681 1.46478C1.71707 1.4673 1.59142 1.41936 1.49632 1.33106C1.40123 1.24276 1.34412 1.121 1.33702 0.991426C1.32993 0.861852 1.37341 0.734584 1.4583 0.636434C1.54319 0.538283 1.66286 0.476914 1.7921 0.465255L10.2787 0.000730388C10.4112 -0.00644076 10.5412 0.0392841 10.64 0.127861C10.7388 0.216438 10.7985 0.340624 10.8058 0.47314L11.2703 8.95971C11.2775 9.09224 11.2318 9.22219 11.1432 9.32102C11.0546 9.41986 10.9304 9.47949 10.7979 9.48683Z"
+                        fill="white"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .portfolio-showcase {
+        background: #131928 !important;
+        padding: 48px 0 110px;
+        overflow: hidden;
+    }
+
+    .portfolio-showcase__inner {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 48.5% 1fr;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .portfolio-showcase__visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .portfolio-showcase__content {
+        padding-top: clamp(0.3rem, 0.8vw, 1rem);
+        color: #fff;
+    }
+
+    .portfolio-showcase__eyebrow {
+        margin: 0 0 18px;
+        font-family: "Montserrat", Helvetica, Arial, Lucida, sans-serif;
+        font-size: 21px;
+        font-weight: 800;
+        line-height: 1;
+        text-align: left;
+        text-transform: uppercase;
+        padding-bottom: 10px;
+        background: linear-gradient(
+            90deg,
+            #8d71fe 6px,
+            #7661fe 23px,
+            #4d53fe 45px,
+            #3f7cfe 57px,
+            #349dfb 71px,
+            #28c2ff 85px
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+
+    .portfolio-showcase__content h2 {
+        font-family: "Jost", Helvetica, Arial, Lucida, sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        color: #ffffff !important;
+        line-height: 60px;
+        padding-bottom: 10px;
+        margin-bottom: 3.093%;
+    }
+
+    .portfolio-showcase__description {
+        margin-bottom: 30px;
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: "Jost", Helvetica, Arial, Lucida, sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 31px;
+        max-width: 620px;
+    }
+
+    .portfolio-showcase__button {
+        margin-top: 28px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #fff;
+        font-style: normal;
+        line-height: 1.7rem;
+        text-transform: capitalize;
+        text-decoration: none;
+        font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif;
+        font-size: clamp(0.9rem, 0.82rem + 0.22vw, 1rem);
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: transform 0.3s ease;
+        border-width: 0 !important;
+        border-radius: 10px;
+        background-image: linear-gradient(
+            270deg,
+            #25c7fe 6px,
+            #3791fd 24px,
+            #407aff 35px,
+            #5449fe 57px,
+            #7661fe 75px,
+            #8d71fe 82px,
+            #8d71fe 90px
+        );
+        padding-top: 10px !important;
+        padding-right: 15px !important;
+        padding-bottom: 10px !important;
+        padding-left: 25px !important;
+    }
+
+    .portfolio-showcase__button:hover {
+        transform: scale(1.1);
+    }
+
+    .portfolio-showcase__button svg {
+        transition: transform 1s ease;
+        transform: rotate(9deg);
+        transform-origin: center;
+        margin-left: 4px;
+    }
+
+    .portfolio-showcase__button:hover svg {
+        transform: rotate(360deg);
+    }
+
+    @media (max-width: 985px) {
+        .portfolio-showcase__inner {
+            display: block;
+        }
+
+        .portfolio-showcase__visual {
+            max-width: 614px;
+            margin: 0 auto;
+        }
+
+        .portfolio-showcase__content {
+            padding-top: 72px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .portfolio-showcase__eyebrow {
+            text-align: center;
+            width: fit-content;
+        }
+    }
+    @media (max-width: 1440px) {
+        .portfolio-showcase__content h2 {
+            font-size: 35px;
+            line-height: 50px;
+        }
+    }
+</style>

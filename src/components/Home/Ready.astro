@@ -1,0 +1,102 @@
+---
+const ready = {
+    title: "Ready to work with us?",
+    href: "/contact/",
+};
+---
+
+<section class="ready-strip" aria-label="Contact call to action">
+    <a class="ready-strip__link" href={ready.href}>
+        <span class="ready-strip__title">{ready.title}</span>
+        <span class="ready-strip__arrow" aria-hidden="true">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="34"
+                height="52"
+                viewBox="0 0 34 52"
+                fill="none"
+            >
+                <path
+                    d="M6 4L28 26L6 48"
+                    stroke="currentColor"
+                    stroke-width="4.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </span>
+    </a>
+</section>
+
+<style>
+    .ready-strip {
+        width: 100%;
+        padding: 0;
+        background: #131928;
+    }
+
+    .ready-strip__link {
+        width: 100%;
+        min-height: clamp(4.75rem, 7vw, 8.5rem);
+        padding: 1rem clamp(1.5rem, 4vw, 3rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(0.8rem, 2vw, 1.5rem);
+        text-decoration: none;
+        color: #fff;
+        background-image: linear-gradient(
+            90deg,
+            #8d71fe 0%,
+            #695afe 28%,
+            #4a53fe 52%,
+            #3a7efe 74%,
+            #28c2ff 100%
+        );
+        transition:
+            filter 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .ready-strip__link:hover {
+        filter: brightness(1.04);
+    }
+
+    .ready-strip__title {
+        font-family: "Jost", Helvetica, Arial, Lucida, sans-serif;
+        font-size: clamp(2rem, 2.8vw, 3.3rem);
+        font-weight: 400;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        text-align: center;
+    }
+
+    .ready-strip__arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        transform: translateX(0);
+        transition: transform 0.35s ease;
+    }
+
+    .ready-strip__arrow svg {
+        width: clamp(1.4rem, 2vw, 2.125rem);
+        height: auto;
+        display: block;
+    }
+
+    .ready-strip__link:hover .ready-strip__arrow {
+        transform: translateX(6px);
+    }
+
+    @media (max-width: 640px) {
+        .ready-strip__link {
+            gap: 0.75rem;
+            min-height: 5rem;
+        }
+
+        .ready-strip__title {
+            font-size: clamp(1.55rem, 6vw, 2.1rem);
+        }
+    }
+</style>
